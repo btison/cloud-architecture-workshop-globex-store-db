@@ -292,6 +292,22 @@ CREATE TABLE public.orders (
 
 
 ALTER TABLE public.orders OWNER TO $POSTGRESQL_USER;
+
+--
+-- Name: orders_outbox; Type: TABLE; Schema: public; Owner: $POSTGRESQL_USER
+--
+
+CREATE TABLE public.orders_outbox (
+    id uuid NOT NULL,
+    aggregateid character varying(50) NOT NULL,
+    aggregatetype character varying(100) NOT NULL,
+    type character varying(100) NOT NULL,
+    payload bytea
+);
+
+
+ALTER TABLE public.orders_outbox OWNER TO $POSTGRESQL_USER;
+
 --
 -- Name: shipping_address; Type: TABLE; Schema: public; Owner: $POSTGRESQL_USER
 --
@@ -340,6 +356,14 @@ ALTER TABLE ONLY public.line_item
 
 ALTER TABLE ONLY public.orders
     ADD CONSTRAINT order_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: orders_outbox pk_orders_outbox; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.orders_outbox
+    ADD CONSTRAINT pk_orders_outbox PRIMARY KEY (id);
 
 
 --

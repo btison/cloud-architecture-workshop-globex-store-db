@@ -14,4 +14,5 @@ ALTER TABLE public.address  OWNER TO debeziumrepgroup;
 ALTER TABLE public.customer OWNER TO debeziumrepgroup;
 ALTER TABLE public.line_item OWNER TO debeziumrepgroup;
 ALTER TABLE public.orders OWNER TO debeziumrepgroup;
+ALTER TABLE public.orders_outbox OWNER TO debeziumrepgroup;
 ALTER TABLE public.shipping_address OWNER TO debeziumrepgroup;
